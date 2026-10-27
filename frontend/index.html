@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>析数 · 电商分析智能体</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+  <section id="auth-screen" class="auth-screen">
+    <div class="auth-story"><div class="wordmark">析数 <span>AGENT ANALYTICS</span></div>
+      <div class="eyebrow">从问题，到可追溯的结果</div>
+      <h1>让分析有依据，<br>让每一步可见。</h1>
+      <p>连接订单、商品与客户数据，完成查询、计算和绘图。每一份报告，都能回到产生它的数据。</p>
+      <div class="story-flow"><span>数据</span><b>→</b><span>工具执行</span><b>→</b><span>验证报告</span></div>
+      <small>电商经营分析工作台 · 项目二</small>
+    </div>
+    <form id="auth-form" class="auth-card">
+      <div class="eyebrow">欢迎进入工作台</div><h2>开始你的分析</h2><p>登录或创建一个独立的项目账号。</p>
+      <label for="username">用户名</label><input id="username" autocomplete="username" minlength="3" maxlength="40" required placeholder="至少三个字符">
+      <label for="password">密码</label><input id="password" type="password" autocomplete="current-password" minlength="8" maxlength="128" required placeholder="至少八个字符">
+      <button class="primary" type="submit">登录工作台</button><button id="register" type="button" class="secondary">创建新账号</button>
+      <div id="auth-error" class="error" role="alert"></div>
+    </form>
+  </section>
+  <div id="workspace" class="workspace" hidden>
+    <aside class="sidebar">
+      <div class="brand-lockup"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 17V11M12 17V5M19 17V8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M4 21H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><div class="wordmark">析数 <span>AGENT ANALYTICS</span></div></div>
+      <div class="sidebar-caption">从数据到洞察</div>
+      <div class="section-label">我的数据集</div><button id="demo" class="secondary full">＋ 加载模拟示例</button>
+      <button id="show-upload" class="quiet full">上传 CSV / Excel</button>
+      <div id="datasets" class="dataset-list" aria-label="我的数据集"></div>
+      <div class="sidebar-note">每份报告都保留数据来源与计算依据。</div>
+      <div class="sidebar-footer"><span id="account"></span><button id="logout" class="quiet">退出</button></div>
+    </aside>
+    <main>
+      <header><div><div class="eyebrow">数据分析 / 工作台</div><h1>分析工作台</h1><p class="header-description">提出问题，查看过程，获得有依据的分析结果。</p></div><span id="health" class="status" role="status">正在检查连接</span></header>
+      <section id="upload-panel" class="panel" hidden>
+        <h2>导入业务数据</h2><p class="muted">四个模板 CSV，或包含 customers、products、orders、order_items 工作表的 XLSX。支持官方 Olist 文件名。</p>
+        <form id="upload-form" class="upload-form"><input id="dataset-name" required maxlength="120" placeholder="数据集名称" aria-label="数据集名称">
+          <input id="files" type="file" accept=".csv,.xlsx" multiple required aria-label="选择数据文件"><button class="primary">上传并预览</button></form>
+      </section>
+      <section id="preview-panel" class="panel" hidden>
+        <h2>确认字段与统计口径</h2><p class="muted">每张表的列名可以不同，关联和含义需要你明确确认。</p>
+        <div class="import-settings"><label>币种<input id="currency" value="BRL" maxlength="3"></label>
+          <label>有效订单状态<input id="valid-status" value="delivered" maxlength="30"></label>
+          <label>CSV 编码<select id="encoding"><option value="utf-8-sig">UTF-8</option><option value="gb18030">GB18030</option></select></label></div>
+        <div id="mapping"></div><button id="confirm-import" class="primary">确认并导入</button>
+      </section>
+      <section class="panel dataset-summary"><div class="dataset-heading"><div><div class="section-label">当前数据集</div><h2 id="selected-name">选择数据，开始探索</h2><p id="selected-meta" class="muted">可以先加载模拟示例，体验完整分析流程。</p></div><span id="selected-status" class="pill">未选择</span></div><div id="dataset-stats" class="dataset-stats" hidden></div></section>
+      <section class="panel question-panel">
+        <div class="section-head conversation-toolbar"><span id="conversation-label" class="conversation-label">新会话</span><div><button id="new-conversation" type="button" class="quiet">＋ 新会话</button><button id="show-history" type="button" class="quiet" aria-haspopup="dialog">历史与摘要</button></div></div>
+        <div class="section-head"><h2>你想了解什么？</h2><select id="mode" aria-label="运行模式"><option value="demo">演示模式 · 规则流程</option><option value="llm">真实模型 · 自主工具调用</option></select></div>
+        <p id="mode-notice" class="muted">演示模式不调用聊天模型；记忆索引可能调用向量模型。</p>
+        <form id="analysis-form"><textarea id="question" aria-label="分析问题" aria-describedby="question-help" required minlength="2" maxlength="4000" rows="3" placeholder="例如：比较 2017-10 与 2017-11 的商品金额，找出变化最大的品类并绘图。"></textarea>
+          <div class="question-footer"><div class="suggestions"><button type="button" class="chip" data-question="比较2017-10与2017-11的商品金额，分析品类变化并绘图">品类变化</button><button type="button" class="chip" data-question="分析月度订单与商品金额趋势">月度趋势</button><button type="button" class="chip" data-question="比较不同地区的商品金额和订单量">地区表现</button></div><button id="analyze" class="primary" disabled>开始分析 ↗</button></div><div class="question-help"><span id="question-help">说明时间范围与关注指标，结果会更清晰。</span><span id="question-count">0 / 4000</span></div></form>
+        <div id="frequent-questions" class="frequent-questions" hidden><span class="muted">你常用的分析</span><div id="memory-suggestions" class="suggestions"></div></div>
+      </section>
+      <details class="panel memory-panel" id="memory-panel">
+        <summary class="memory-summary"><div><strong>分析偏好与记忆</strong><span class="muted">让每次分析更贴合你的习惯</span></div><span id="memory-count" class="pill">尚未加载</span></summary>
+        <div class="memory-body">
+        <div class="section-head"><h2>个性化与长期记忆</h2><button id="refresh-memory" class="quiet" type="button">刷新记忆</button></div>
+        <p class="muted">偏好影响图表和说明风格，常用模式用于推荐；所有数字会从当前数据重新计算。</p>
+        <form id="preferences-form" class="preferences-form">
+          <label for="preferred-chart">默认图表<select id="preferred-chart" aria-label="默认图表"><option value="">自动选择</option><option value="bar">柱状图</option><option value="line">折线图</option></select></label>
+          <label for="preferred-report">说明风格<select id="preferred-report" aria-label="默认报告风格"><option value="">自动选择</option><option value="concise">简洁说明</option><option value="detailed">详细说明</option></select></label>
+          <button class="secondary">保存偏好</button>
+        </form>
+        <div id="memory-list"></div></div>
+      </details>
+      <dialog id="conversation-panel" class="history-dialog" aria-labelledby="history-title"><div class="dialog-header"><div><div class="eyebrow">CONVERSATION</div><h2 id="history-title">历史与摘要</h2></div><button id="close-history" type="button" class="quiet" aria-label="关闭历史">关闭 ×</button></div><div class="dialog-content"><div class="summary-card"><strong>会话摘要</strong><p id="summary-status" class="muted"></p><div id="conversation-summary"></div></div><div id="conversation-messages"></div><button id="more-history" type="button" class="secondary full" hidden>加载更多历史</button></div></dialog>
+      <div class="results-grid">
+        <section class="panel tasks-panel"><div class="section-head"><h2>最近分析 <span id="task-count" class="count-badge">0</span></h2><button id="refresh" class="quiet">刷新</button></div><div id="tasks" class="task-list"><p class="muted">还没有分析任务。</p></div></section>
+        <section class="panel execution-panel"><div class="section-head"><h2>执行过程</h2><button id="cancel" class="quiet danger" hidden>取消任务</button></div>
+          <div id="task-info" class="task-info" aria-live="polite">选择一个任务查看执行记录。</div><label class="event-toggle"><input id="event-details" type="checkbox">显示详细过程</label><ol id="events" class="events"><li class="empty-state">分析开始后，这里会展示查询、绘图与验证进度。</li></ol>
+          <form id="resume-form" hidden><label id="clarification-label" for="answer"></label><textarea id="answer" required rows="2" maxlength="2000"></textarea><button class="primary">补充并继续</button></form>
+        </section>
+      </div>
+      <section id="results-panel" class="panel" hidden><div class="section-head"><h2>分析结果</h2><span id="artifact-total" class="muted">结果表 · 图表 · 报告</span></div><div class="artifact-tabs" role="group" aria-label="筛选分析结果"><button type="button" class="artifact-tab active" data-artifact-kind="all" aria-pressed="true">全部</button><button type="button" class="artifact-tab" data-artifact-kind="report" aria-pressed="false">报告</button><button type="button" class="artifact-tab" data-artifact-kind="chart" aria-pressed="false">图表</button><button type="button" class="artifact-tab" data-artifact-kind="table" aria-pressed="false">数据表</button></div><div id="artifacts" aria-live="polite"></div><p id="artifact-empty" class="empty-state" hidden>当前任务没有这类结果。</p></section>
+      <footer>商品金额按已确认口径统计。数据中的变化贡献，不自动代表业务因果。</footer>
+    </main>
+  </div>
+</body></html>

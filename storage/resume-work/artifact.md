@@ -1,0 +1,5 @@
+# Resume design reference
+
+The user screenshot is the design and content authority. Preserve the name, personal information, both project descriptions and all bullets. Create one editable DOCX with native paragraphs, native bullet lists, and replaceable photo. Use the supplied photograph region without retouching. Use Letter portrait to match the screenshot proportions, deep blue name and section strips, medium gray body, and a compact single-page composition. Borderless layout tables in the header and section strips intentionally follow the supplied reference rather than generic document styling.
+
+The runtime does not bundle LibreOffice on Windows. Use the packaged render_docx.py PDF-to-PNG machinery with an isolated native Word PDF-export adapter if necessary. Keep the automation window hidden, open only the generated document, and leave unrelated Word sessions alone. Review the complete rendered page before delivery. Only the DOCX is a final output; rendering PDF/PNG files are internal QA.

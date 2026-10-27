@@ -1,0 +1,558 @@
+{
+  "generatedAt": "2026-10-21T13:57:41+08:00",
+  "scope": "显式允许的源码文件；未读取.env与旧教程",
+  "files": [
+    {
+      "path": "backend/__init__.py",
+      "sha256": "6f68eb675f2f0debdf407848990b3a79380ddd1051b5bbefe2330587235ff6d3",
+      "bytes": 339,
+      "lines": 7
+    },
+    {
+      "path": "backend/agent/__init__.py",
+      "sha256": "35e78159b736f17d182693615c6ad98a633de3db6cf9332b683ba8fac7d650b0",
+      "bytes": 70,
+      "lines": 1
+    },
+    {
+      "path": "backend/agent/graph.py",
+      "sha256": "600039d1acc39693dcc8e502d085cc02152fa7685d33a737575fabfa079dd51c",
+      "bytes": 2140,
+      "lines": 41
+    },
+    {
+      "path": "backend/agent/model.py",
+      "sha256": "8a7e0734461ecf5b63e66b7a74a2faf5e6c235f89c22e96e6b343a86b64de280",
+      "bytes": 15777,
+      "lines": 189
+    },
+    {
+      "path": "backend/agent/nodes/__init__.py",
+      "sha256": "414ff49e602c6bff70983fd9b1f2e7043df76ec2ab69deebcf4a6b06de884e5b",
+      "bytes": 52,
+      "lines": 1
+    },
+    {
+      "path": "backend/agent/nodes/clarification.py",
+      "sha256": "281975cbf422f3462e0c4af4d880b280da0679d330f5b459fc33fc8b7038a302",
+      "bytes": 956,
+      "lines": 14
+    },
+    {
+      "path": "backend/agent/nodes/context.py",
+      "sha256": "abc8aa79658cccc0063789073fdc98f122a2c2aaa27015dee3f32427c07d37c4",
+      "bytes": 954,
+      "lines": 14
+    },
+    {
+      "path": "backend/agent/nodes/decision.py",
+      "sha256": "c5a649a5c425e59039a9ea8ad4e9b6b77c974769b4774cb7acc0ba311b4921a2",
+      "bytes": 2116,
+      "lines": 30
+    },
+    {
+      "path": "backend/agent/nodes/finalization.py",
+      "sha256": "59baadd6fe3fc0af99b193d4e59f2c2580c52806d28fc59804b5074781e6847f",
+      "bytes": 1094,
+      "lines": 17
+    },
+    {
+      "path": "backend/agent/nodes/tools.py",
+      "sha256": "135735645f4f0bb03b749b5e35f232a72e2ffae0ae55cc4c489c093509ce52c1",
+      "bytes": 15218,
+      "lines": 229
+    },
+    {
+      "path": "backend/agent/nodes/verification.py",
+      "sha256": "b872919bd0849242d05942c414b99c898c1cc367fd5a0c72221f8755d6b99169",
+      "bytes": 4542,
+      "lines": 51
+    },
+    {
+      "path": "backend/agent/state.py",
+      "sha256": "0d32f3b69a809117c99b4061e47cf84dd29cfe1b92ed05da807d2484eb0e76c6",
+      "bytes": 1532,
+      "lines": 35
+    },
+    {
+      "path": "backend/agent/tool_registry.py",
+      "sha256": "27ca7d9a70d656b99e06059304d9a98f4a47201cb3a24cc9b7ca9bbd98adfcc8",
+      "bytes": 6110,
+      "lines": 98
+    },
+    {
+      "path": "backend/api/__init__.py",
+      "sha256": "2b51efbd7e030931e3421e40095e434683d5b154f82dbfd8fadd682022abb749",
+      "bytes": 37,
+      "lines": 1
+    },
+    {
+      "path": "backend/api/dependencies.py",
+      "sha256": "9c74c27b73c1094f232d69983284cb2cbb627e4b7a4b0be1ff5c5a54ea0a618b",
+      "bytes": 1217,
+      "lines": 25
+    },
+    {
+      "path": "backend/api/routes/__init__.py",
+      "sha256": "ef4337126d532fd91170d32f5b432a2dfbe145174e4a2d1ff428c63a927fd0a4",
+      "bytes": 43,
+      "lines": 1
+    },
+    {
+      "path": "backend/api/routes/analysis_tasks.py",
+      "sha256": "339b3efe4ad0cd0bb2e83281312bd6a8c5f3acb683e3d82c11d50f7d06c817fa",
+      "bytes": 5461,
+      "lines": 93
+    },
+    {
+      "path": "backend/api/routes/artifacts.py",
+      "sha256": "10f33873c6d9000bca8f1b77b08d063423b6fedaed52c4313ad8797d01a6508a",
+      "bytes": 1438,
+      "lines": 27
+    },
+    {
+      "path": "backend/api/routes/auth.py",
+      "sha256": "57823c4df3744781ae2adb146abced1e38b73214e484c089aedefda11fc3c127",
+      "bytes": 1867,
+      "lines": 40
+    },
+    {
+      "path": "backend/api/routes/conversations.py",
+      "sha256": "e50842cfb02f29ac4a42b8b03511b35c038bdca2e5f0a7aea316a8f837ba98b9",
+      "bytes": 2063,
+      "lines": 29
+    },
+    {
+      "path": "backend/api/routes/datasets.py",
+      "sha256": "fbe35c10b01136e3677a2f3e410a3761708c50e31281cc5ed895cdcbc84db689",
+      "bytes": 5357,
+      "lines": 98
+    },
+    {
+      "path": "backend/api/routes/health.py",
+      "sha256": "39859941faf8d3a807c862d74a3c633898650c90a04ef2607cccf795f4c40305",
+      "bytes": 1465,
+      "lines": 34
+    },
+    {
+      "path": "backend/api/routes/memories.py",
+      "sha256": "a753ff34e0aebf51dad8acabf20af353110a3a67e79cd19faecef36774b6f2a8",
+      "bytes": 3649,
+      "lines": 60
+    },
+    {
+      "path": "backend/context/__init__.py",
+      "sha256": "8501c75f2ad33c9aa85f9d8875f8ad5429dc28247df4ef30e7c9397142ae3fab",
+      "bytes": 76,
+      "lines": 1
+    },
+    {
+      "path": "backend/context/conversations.py",
+      "sha256": "485972e9037604817e415c286f062c09f0cd5849fe135086b64eb1576520b1d3",
+      "bytes": 7264,
+      "lines": 98
+    },
+    {
+      "path": "backend/context/manager.py",
+      "sha256": "e7024f6db6f15def9310589add25e0b87010e2fcfc1242d75e8b362817877c1e",
+      "bytes": 5028,
+      "lines": 78
+    },
+    {
+      "path": "backend/context/summary.py",
+      "sha256": "a7e4f8417663634966250b992ea113bdccab2ea3d0909ea8ef2c169590aeace8",
+      "bytes": 4063,
+      "lines": 55
+    },
+    {
+      "path": "backend/core/__init__.py",
+      "sha256": "f7deddfaba568c7d69af24250657bf159b69488f410175b95aa7a696da9d007e",
+      "bytes": 82,
+      "lines": 1
+    },
+    {
+      "path": "backend/core/config.py",
+      "sha256": "69365c699c8a241f562b23d14015d376d70c50052ec20dea87f012091543116c",
+      "bytes": 4111,
+      "lines": 86
+    },
+    {
+      "path": "backend/core/database.py",
+      "sha256": "c7036e862e8846079c102f7d033f6301b37adb3bc2c6930eca632a39d6d1ac2b",
+      "bytes": 921,
+      "lines": 16
+    },
+    {
+      "path": "backend/core/security.py",
+      "sha256": "4658afbf3cc4478af0038b675a75639d9fa8fec23d068b6502c696534bf0cf39",
+      "bytes": 1392,
+      "lines": 36
+    },
+    {
+      "path": "backend/core/storage.py",
+      "sha256": "54c99b208edbff9d43c82843cddb2b6de65b91cf97798e3d7778fbd9443e9975",
+      "bytes": 4450,
+      "lines": 95
+    },
+    {
+      "path": "backend/execution/__init__.py",
+      "sha256": "e688100853f629efbb317d1fde8319ec8e122d9d6d809a77aa9e68025ebc32aa",
+      "bytes": 89,
+      "lines": 1
+    },
+    {
+      "path": "backend/execution/metric_scope.py",
+      "sha256": "01c915640999837e7c8634f3d5cbf811e101821f1450e7d81da94527c1dad7c1",
+      "bytes": 2822,
+      "lines": 43
+    },
+    {
+      "path": "backend/execution/policy.py",
+      "sha256": "a2bcf02d2308d2c48456370e4da063b4e4bafd50f63ca8a1c894da85036c916c",
+      "bytes": 4749,
+      "lines": 68
+    },
+    {
+      "path": "backend/execution/sandbox.py",
+      "sha256": "bfadf68d66955b5a5d6ffa3381742884c650e1eda31a9cd0dc3fe3d696655cea",
+      "bytes": 2842,
+      "lines": 43
+    },
+    {
+      "path": "backend/execution/sql_executor.py",
+      "sha256": "1b3e1303b859e4119c7d60a7b785fdb40abd582fcb2f467486a22cc40b20f465",
+      "bytes": 3007,
+      "lines": 39
+    },
+    {
+      "path": "backend/ingestion/__init__.py",
+      "sha256": "10d9c2b905f4587166885acc387de54db7caed1aa32ab80ffdf777c8c2bc3bb6",
+      "bytes": 94,
+      "lines": 1
+    },
+    {
+      "path": "backend/ingestion/mapping.py",
+      "sha256": "f1b2a1e54f182598c09464316df90dec6ee3f3812095aea1946cbeae86eeef77",
+      "bytes": 1985,
+      "lines": 36
+    },
+    {
+      "path": "backend/ingestion/parsers.py",
+      "sha256": "9ac3610278b54e784fa7eb82cae6b01a4d693abbe7be205b695d05fe647312fd",
+      "bytes": 1746,
+      "lines": 32
+    },
+    {
+      "path": "backend/ingestion/validation.py",
+      "sha256": "e0e27895109672a490d870dad29c6ebadf2b9f17cc53ae38d4947cd0c0311adc",
+      "bytes": 4169,
+      "lines": 74
+    },
+    {
+      "path": "backend/main.py",
+      "sha256": "35b171d6b1ab6bcc8bec279d310aa735d987c25b194298b3e530cbb7133eef59",
+      "bytes": 1744,
+      "lines": 35
+    },
+    {
+      "path": "backend/memory/__init__.py",
+      "sha256": "16b65bb013a442c77b05eb4129061a9ae4f089ee97ae7539426078feb32717eb",
+      "bytes": 112,
+      "lines": 1
+    },
+    {
+      "path": "backend/memory/service.py",
+      "sha256": "fc8f5abf6bc4dbb625aa6437d0a98516219764d2d288ea66e20934976c175089",
+      "bytes": 13595,
+      "lines": 234
+    },
+    {
+      "path": "backend/memory/vectors.py",
+      "sha256": "7ef35efbbc4372ebabd79002cd9e8e8adb18cc82f34a3e6585d98053a0e5eb5e",
+      "bytes": 6307,
+      "lines": 119
+    },
+    {
+      "path": "backend/models/__init__.py",
+      "sha256": "888b607eab9b6f3ecf8e1f8119a588f501ed01e5cea832b6cd049da55a3f5407",
+      "bytes": 762,
+      "lines": 14
+    },
+    {
+      "path": "backend/models/analysis_task.py",
+      "sha256": "4e464d7206c0d627396359a5be9d113fc3a6e46559c43c62ec95ab5bf8928f14",
+      "bytes": 2217,
+      "lines": 30
+    },
+    {
+      "path": "backend/models/base.py",
+      "sha256": "4a3f1b95c4a46b9f98d8e94946210113d584e1f011e674442aa25cc1746b8e71",
+      "bytes": 626,
+      "lines": 19
+    },
+    {
+      "path": "backend/models/conversation.py",
+      "sha256": "f651e94c0811f9e722f814b705e6e0014dd6f4443e1b92a1ba4f6b8f60f505ff",
+      "bytes": 2692,
+      "lines": 38
+    },
+    {
+      "path": "backend/models/customer.py",
+      "sha256": "65d7b8ab37c64e0a84cf9ef7236f05c29382a9051a13fecf37114a608e689f43",
+      "bytes": 764,
+      "lines": 14
+    },
+    {
+      "path": "backend/models/dataset.py",
+      "sha256": "3fffe29418d3fb1deb9f5d7df704386571945fd55856d235c5846923df1d01e5",
+      "bytes": 1359,
+      "lines": 22
+    },
+    {
+      "path": "backend/models/memory.py",
+      "sha256": "bea1b3730ad075b527071c804cbddaef02581ead57d933ea202c290ca929feb0",
+      "bytes": 2784,
+      "lines": 41
+    },
+    {
+      "path": "backend/models/order.py",
+      "sha256": "4b0e310dda187826f7e0dc1712b84ca15f4fdc5ea2f411a8a7afdb6e1f21b6ba",
+      "bytes": 1186,
+      "lines": 21
+    },
+    {
+      "path": "backend/models/order_item.py",
+      "sha256": "4b13a78c5113fb48e3694b3a04b7626477dcce60bd628d2859961b3d2406c971",
+      "bytes": 1331,
+      "lines": 22
+    },
+    {
+      "path": "backend/models/product.py",
+      "sha256": "d8e8ca264783c0a9f2875129937b2a4e923dd451db66279ea2529c67e4d8c930",
+      "bytes": 618,
+      "lines": 12
+    },
+    {
+      "path": "backend/models/user.py",
+      "sha256": "0f10f7a1e17e94ca34e09799551f7ce50e316676c775ea5028123526ff6bbf54",
+      "bytes": 640,
+      "lines": 13
+    },
+    {
+      "path": "backend/reporting/__init__.py",
+      "sha256": "f2b5e57f6c3fccb5f8d0d65961515516411cdea9b8ff0f8849ec3c7055e55f0d",
+      "bytes": 82,
+      "lines": 1
+    },
+    {
+      "path": "backend/reporting/builder.py",
+      "sha256": "1e6df0e3bbbae8ccd41b3a3ee5180d4de7d0735bfdd24b32c8445b1070c1569f",
+      "bytes": 3046,
+      "lines": 38
+    },
+    {
+      "path": "backend/reporting/requirements.py",
+      "sha256": "24557d79cac9a973bdfc8a8987d158694d5c4cf46ddcebd1d266eba7d7edfc9a",
+      "bytes": 2065,
+      "lines": 38
+    },
+    {
+      "path": "backend/reporting/verification.py",
+      "sha256": "cbee710bb03eb2204874c3dc3a45b78dfa3f3847d40bf94549e7fcceb64f53a0",
+      "bytes": 7011,
+      "lines": 110
+    },
+    {
+      "path": "backend/repositories/__init__.py",
+      "sha256": "e2acd275726f7063c540777e8348245125c2585a89cf79be0ed5d7f06c67b605",
+      "bytes": 55,
+      "lines": 1
+    },
+    {
+      "path": "backend/repositories/analysis_tasks.py",
+      "sha256": "f73022174f0a5c35e64a96fc87311f12ed295a04e9bee71431ed885a0e354c28",
+      "bytes": 4665,
+      "lines": 84
+    },
+    {
+      "path": "backend/repositories/business_data.py",
+      "sha256": "5512059f49457f518767ffb3554d73aeaad439396881bdbdd3cc5dab5311e393",
+      "bytes": 917,
+      "lines": 14
+    },
+    {
+      "path": "backend/repositories/datasets.py",
+      "sha256": "b3546c611e1d40d671162c3cf1142833422ebaf370815c42bd6af0f96e2a4509",
+      "bytes": 569,
+      "lines": 12
+    },
+    {
+      "path": "backend/schemas/__init__.py",
+      "sha256": "ee747cd2cf19fab2166e4cb05a4f97d738e8eddbc459dbc2d8916b60aea5eaed",
+      "bytes": 52,
+      "lines": 1
+    },
+    {
+      "path": "backend/schemas/analysis_tasks.py",
+      "sha256": "aa93120fb87c9993cdcf0c4ba84f74640ede2c26df8674b6fb90b7c2a82baddc",
+      "bytes": 756,
+      "lines": 19
+    },
+    {
+      "path": "backend/schemas/auth.py",
+      "sha256": "bee618bd82e69c9e96b8ae47bbe3aa26fbbf7a6c606f66aeaaa42fd52a040b4d",
+      "bytes": 370,
+      "lines": 8
+    },
+    {
+      "path": "backend/schemas/datasets.py",
+      "sha256": "b99dbffbb15cc4e91e75ff16d2506174f5317eccf6f40e77328744e5196095b8",
+      "bytes": 630,
+      "lines": 12
+    },
+    {
+      "path": "backend/services/__init__.py",
+      "sha256": "08936fa797cac54f06490a8bef65a05e21bf324d5ee5578df6939dbe60dca917",
+      "bytes": 73,
+      "lines": 1
+    },
+    {
+      "path": "backend/services/analysis_tasks.py",
+      "sha256": "3985ba2ac81cd2c86a1fd69b5b0812eeefb4a9c5ca36735b1f7d29ce3a66ba3c",
+      "bytes": 4634,
+      "lines": 73
+    },
+    {
+      "path": "backend/services/datasets.py",
+      "sha256": "f44054d757069f8f158fe732ce4cae3fa12fbab1e84ffac10978931ee415600b",
+      "bytes": 7245,
+      "lines": 122
+    },
+    {
+      "path": "backend/tools/__init__.py",
+      "sha256": "6aaaef63ab6aef0e912286b767e7a683bf04ff8dc9c9c46231d9652952f015ab",
+      "bytes": 49,
+      "lines": 1
+    },
+    {
+      "path": "backend/tools/chart.py",
+      "sha256": "fb6e0188009782bc7b83115bb09036c2387ecaae27f5d7d75fcccbc9c8ded6ce",
+      "bytes": 4010,
+      "lines": 72
+    },
+    {
+      "path": "backend/tools/customer_metrics.py",
+      "sha256": "b0e4c7da9c6e36a01511f81a858d307324a3e9e785fa9f87e093a494f32495e8",
+      "bytes": 2832,
+      "lines": 41
+    },
+    {
+      "path": "backend/tools/dataset_schema.py",
+      "sha256": "f0cc643ec489f0e10624e3c14eea5949064c971f5e7d8a68895fcdaed4943b14",
+      "bytes": 2163,
+      "lines": 22
+    },
+    {
+      "path": "backend/tools/python.py",
+      "sha256": "1447ed662d4d68d0fc721d8c2322d66e69d00b285d80ababda14277b95484526",
+      "bytes": 376,
+      "lines": 7
+    },
+    {
+      "path": "backend/tools/sales_metrics.py",
+      "sha256": "0c3f2e5428aeb1874c6e9ac0ee8c177bb4f8c51a6f0bc66d127b5859424cbe15",
+      "bytes": 3055,
+      "lines": 48
+    },
+    {
+      "path": "backend/tools/sql.py",
+      "sha256": "0800a0a3126f5314b3bb1bfe25d5fd4d635d4af19e0125fb2bbb35952e75e88d",
+      "bytes": 407,
+      "lines": 7
+    },
+    {
+      "path": "backend/workers/__init__.py",
+      "sha256": "1033f878fcdedddc86494de0c69b30544ac6e429d18dd03a3a2ba9220e83cede",
+      "bytes": 76,
+      "lines": 1
+    },
+    {
+      "path": "backend/workers/celery_app.py",
+      "sha256": "9ba0d395435031e9d6506a82ce3f9136d01510a8abb7b343b3ac9381e45709f0",
+      "bytes": 1383,
+      "lines": 18
+    },
+    {
+      "path": "backend/workers/tasks.py",
+      "sha256": "7ecd39a9a867412c4fa9c642c3adf05a10a55aed692d13fa21bb792802d6e61f",
+      "bytes": 11753,
+      "lines": 164
+    },
+    {
+      "path": "sandbox/runner.py",
+      "sha256": "8408110e0989d2dcefc1d83679910ad004630c8fe5393602dddea1c15f517ee3",
+      "bytes": 1927,
+      "lines": 39
+    },
+    {
+      "path": "sandbox/Dockerfile",
+      "sha256": "a807c8789dacd614bc786dbbab89d79d177f8a631c8740b889f2be5af8592ccd",
+      "bytes": 262,
+      "lines": 6
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "a2053de734489860475f24a2120fb2778e040b3abe5ebac54980bf0b6576e7a9",
+      "bytes": 427,
+      "lines": 22
+    },
+    {
+      "path": "scripts/start.ps1",
+      "sha256": "326ee73829320cddeb813e4778a98b4aadf12bdf6f684ce8da66e22bebbc8d52",
+      "bytes": 4305,
+      "lines": 55
+    },
+    {
+      "path": "scripts/stop.ps1",
+      "sha256": "6873502c0d99651efd01e8d0c1881763db1f1112f8552167742ca06b5171f08a",
+      "bytes": 1055,
+      "lines": 15
+    },
+    {
+      "path": "scripts/init_db.py",
+      "sha256": "ac67b23845541289d6861b4b78d6c94f9eff28fb08bacc41148060a5999603eb",
+      "bytes": 4356,
+      "lines": 65
+    },
+    {
+      "path": "scripts/init_memory.py",
+      "sha256": "49486bfbf0ea7ec5c96697567fc3ea0dc355eee51888c643e30f7bd166a58e87",
+      "bytes": 1703,
+      "lines": 31
+    },
+    {
+      "path": "migrations/001_initial.sql",
+      "sha256": "06e633c8f08cc28d1bdb0e9c1e06c9a96d57f857f5833471efa1212fcba0ff4c",
+      "bytes": 3759,
+      "lines": 107
+    },
+    {
+      "path": "migrations/002_memory_context.sql",
+      "sha256": "44ee33ea31a586461bfcf6804ea81702fd6f6e3b5156f45b43658848faac7576",
+      "bytes": 3017,
+      "lines": 91
+    },
+    {
+      "path": "frontend/app.js",
+      "sha256": "6a0385fbeba56cc8c3f1d027160f7276fad697cd3cbfa58ac7e2033efceaaa49",
+      "bytes": 46444,
+      "lines": 681
+    },
+    {
+      "path": "evaluations/oracle.py",
+      "sha256": "9e9af462ccdc1a7508a6d9247316c959c065bc430fd0e8c8a4aea13a39c37731",
+      "bytes": 4679,
+      "lines": 73
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+[
+  {"question":"统计商品金额和订单量，按品类分析", "expected":{"order_count":66,"item_amount":"6550.00"}},
+  {"question":"比较2017-10与2017-11的品类变化", "expected":{"order_count":66,"item_amount":"6550.00"}},
+  {"question":"统计2017-10月商品金额，分析品类", "expected":{"order_count":33,"item_amount":"3660.00"}},
+  {"question":"统计2017-11月商品金额，分析品类", "expected":{"order_count":33,"item_amount":"2890.00"}},
+  {"question":"比较不同地区的商品金额和订单量", "expected":{"order_count":66,"item_amount":"6550.00"}}
+]

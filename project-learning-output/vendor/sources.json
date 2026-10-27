@@ -1,0 +1,30 @@
+[
+  {
+    "file": "marked.min.js",
+    "version": "marked 17.0.5",
+    "source": "bundled runtime marked/lib/marked.umd.js",
+    "bytes": 42540,
+    "sha256": "0db7abc826b5ac76f6ed11951ae34074ba50438ce6ea8d52889203779e5cbbad"
+  },
+  {
+    "file": "mermaid.min.js",
+    "version": "mermaid 11.12.1",
+    "source": "https://cdn.jsdelivr.net/npm/mermaid@11.12.1/dist/mermaid.min.js",
+    "bytes": 2749172,
+    "sha256": "198b19442f86f0b46a17e56d3abf744c3a28a3427e66fa8dada3b589a77babcc"
+  },
+  {
+    "file": "highlight.min.js",
+    "version": "highlight.js 11.9.0",
+    "source": "https://raw.githubusercontent.com/highlightjs/cdn-release/11.9.0/build/highlight.min.js",
+    "bytes": 121727,
+    "sha256": "837a6fa5b0c736b52bbde2b2b6190f305da3fc9ed41681db5321507057b5c846"
+  },
+  {
+    "file": "github-dark.min.css",
+    "version": "highlight.js 11.9.0 style",
+    "source": "https://raw.githubusercontent.com/highlightjs/cdn-release/11.9.0/build/styles/github-dark.min.css",
+    "bytes": 1315,
+    "sha256": "9f208d022102b1d0c7aebfecd8e42ca7997d5de636649d2b31ea63093d809019"
+  }
+]

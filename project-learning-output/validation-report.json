@@ -1,0 +1,50 @@
+{
+  "schema": "jsonschema Draft202012Validator与FormatChecker通过",
+  "chapters": 21,
+  "sections": 198,
+  "backend_files": 81,
+  "snapshot_files": 92,
+  "core_function_cards": 73,
+  "unique_core_functions": 73,
+  "annotated_lines": 1640,
+  "function_index_entries": 166,
+  "source_code_exact_match": true,
+  "all_nonempty_core_lines_annotated": true,
+  "anchors_unique": true,
+  "sensitive_pattern_scan": "未发现长sk密钥或含凭据PostgreSQL URL；本轮未读取.env",
+  "business_tests": "未运行；不导入业务模块、不访问数据库或模型",
+  "browser": {
+    "status": "通过实际浏览器检查",
+    "entry": "http://127.0.0.1:8420/#start-business",
+    "checks": [
+      "21章与198节导航已加载",
+      "章节跳转",
+      "代码一键展开",
+      "65行代码保留行号且有语法高亮",
+      "全文搜索summary_cursor并跳转",
+      "深色主题及刷新保留",
+      "架构图SVG已渲染",
+      "窄屏目录选择后自动收起",
+      "页面未捕获warn/error"
+    ],
+    "screenshot": "教程预览.png"
+  },
+  "source_hashes_unchanged_at_delivery": true,
+  "viewer_javascript_syntax": "Node --check 通过",
+  "local_assets": [
+    "./vendor/marked.min.js",
+    "./vendor/mermaid.min.js",
+    "./vendor/highlight.min.js",
+    "./vendor/github-dark.min.css"
+  ],
+  "limitations": "未运行本项目业务测试或重测模型准确率；历史成绩按日期与分母解释；风险属于静态推导，非本轮复现。",
+  "local_file_fix": {
+    "date": "2026-10-22",
+    "changes": [
+      "removed crossorigin from local classic scripts",
+      "guarded initial localStorage access"
+    ],
+    "static_checks": "local assets exist; embedded data retained",
+    "edge_runtime": "当前自动化未连接Edge，未声称实测该浏览器"
+  }
+}

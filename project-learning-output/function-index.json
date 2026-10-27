@@ -1,0 +1,1330 @@
+[
+  {
+    "path": "backend/agent/graph.py",
+    "name": "route_action",
+    "line": 12,
+    "end": 14,
+    "explained": true,
+    "docstring": "读取模型选择的动作，决定接下来执行工具、询问用户，还是检查分析结果。"
+  },
+  {
+    "path": "backend/agent/graph.py",
+    "name": "route_verification",
+    "line": 17,
+    "end": 19,
+    "explained": false,
+    "docstring": "检查通过时生成报告；检查失败时回到模型决策，让模型尝试修正。"
+  },
+  {
+    "path": "backend/agent/graph.py",
+    "name": "build_graph",
+    "line": 22,
+    "end": 41,
+    "explained": true,
+    "docstring": "创建分析流程，并接入保存执行进度和暂停等待用户的能力。"
+  },
+  {
+    "path": "backend/agent/model.py",
+    "name": "create_http_client",
+    "line": 61,
+    "end": 63,
+    "explained": false,
+    "docstring": "为一次模型决策提供可关闭的 HTTP 客户端，也便于测试注入离线传输。"
+  },
+  {
+    "path": "backend/agent/model.py",
+    "name": "model_parameters",
+    "line": 66,
+    "end": 72,
+    "explained": true,
+    "docstring": "返回框架模型的生成参数，平台字段放入 extra_body，不包含密钥。"
+  },
+  {
+    "path": "backend/agent/model.py",
+    "name": "model_action",
+    "line": 75,
+    "end": 132,
+    "explained": true,
+    "docstring": "通过 bind_tools/ainvoke 获得全部标准工具调用，有限修正纯文字响应并累计用量。"
+  },
+  {
+    "path": "backend/agent/model.py",
+    "name": "demo_action",
+    "line": 135,
+    "end": 189,
+    "explained": false,
+    "docstring": "根据预设规则选择演示动作，包括查询、复购计算、绘图和报告生成。这里不调用聊天模型。"
+  },
+  {
+    "path": "backend/agent/model.py",
+    "name": "_create_chat_result",
+    "line": 19,
+    "end": 27,
+    "explained": false,
+    "docstring": "在框架解析结果后保留服务商要求回传的推理字段，不把它展示给用户。"
+  },
+  {
+    "path": "backend/agent/model.py",
+    "name": "_get_request_payload",
+    "line": 29,
+    "end": 35,
+    "explained": false,
+    "docstring": "在框架生成请求后回传推理字段，避免更改框架的工具消息与参数格式。"
+  },
+  {
+    "path": "backend/agent/nodes/clarification.py",
+    "name": "clarify",
+    "line": 6,
+    "end": 14,
+    "explained": false,
+    "docstring": "暂停当前流程并询问用户。恢复时该节点会从头执行，因此暂停前不能进行重复写入等操作。"
+  },
+  {
+    "path": "backend/agent/nodes/context.py",
+    "name": "manage_context",
+    "line": 6,
+    "end": 14,
+    "explained": false,
+    "docstring": "整理本轮上下文，并记录摘要成功或失败的情况。不会删除数据库或图状态中的原文。"
+  },
+  {
+    "path": "backend/agent/nodes/decision.py",
+    "name": "decide",
+    "line": 8,
+    "end": 30,
+    "explained": false,
+    "docstring": "选择下一步操作并累计模型用量。达到步骤上限时停止，防止分析一直循环。"
+  },
+  {
+    "path": "backend/agent/nodes/finalization.py",
+    "name": "finalize",
+    "line": 7,
+    "end": 17,
+    "explained": true,
+    "docstring": "确认任务没有取消后生成报告，登记报告文件并返回其信息。"
+  },
+  {
+    "path": "backend/agent/nodes/tools.py",
+    "name": "validate_arguments",
+    "line": 23,
+    "end": 28,
+    "explained": false,
+    "docstring": "复用工具的 Pydantic schema 检查控制动作和兼容入口，不再手工维护参数类型表。"
+  },
+  {
+    "path": "backend/agent/nodes/tools.py",
+    "name": "feedback_messages",
+    "line": 31,
+    "end": 36,
+    "explained": false,
+    "docstring": "把工具结果整理成长度有限的消息，并标明它对应哪一次模型工具调用。"
+  },
+  {
+    "path": "backend/agent/nodes/tools.py",
+    "name": "feedback_content",
+    "line": 39,
+    "end": 51,
+    "explained": true,
+    "docstring": "生成有长度上限的完整 JSON，SQL、代码和服务器路径不重复放入模型反馈。"
+  },
+  {
+    "path": "backend/agent/nodes/tools.py",
+    "name": "resolve_table_reference",
+    "line": 54,
+    "end": 62,
+    "explained": true,
+    "docstring": "把本任务中的 table_1 等短名称或真实 UUID 转为表格 ID。找不到时，报错并列出可用的表格名称。"
+  },
+  {
+    "path": "backend/agent/nodes/tools.py",
+    "name": "publish_result",
+    "line": 65,
+    "end": 70,
+    "explained": false,
+    "docstring": "为表格添加便于模型使用的短名称，确认任务未取消后登记结果，并把结果加入产物列表。"
+  },
+  {
+    "path": "backend/agent/nodes/tools.py",
+    "name": "emit_tool_event",
+    "line": 73,
+    "end": 75,
+    "explained": false,
+    "docstring": "给工具事件添加调用 ID，让并发同名工具的开始与完成时间仍能一一对应。"
+  },
+  {
+    "path": "backend/agent/nodes/tools.py",
+    "name": "execute_business",
+    "line": 78,
+    "end": 151,
+    "explained": true,
+    "docstring": "执行业务约束与产物登记；参数解析和工具分发由 ToolNode 处理。"
+  },
+  {
+    "path": "backend/agent/nodes/tools.py",
+    "name": "tool_error_feedback",
+    "line": 160,
+    "end": 164,
+    "explained": false,
+    "docstring": "向模型返回可修正的简明错误，取消异常继续向上传播以停止整批执行。"
+  },
+  {
+    "path": "backend/agent/nodes/tools.py",
+    "name": "build_tool_runner",
+    "line": 167,
+    "end": 175,
+    "explained": true,
+    "docstring": "创建标准 ToolNode 子图，让框架提供 ToolRuntime、参数校验和每个调用的 ToolMessage。"
+  },
+  {
+    "path": "backend/agent/nodes/tools.py",
+    "name": "execute_tool",
+    "line": 181,
+    "end": 229,
+    "explained": true,
+    "docstring": "完整处理一轮调用：独立只读操作受限并发，依赖已有表格的 Python 与绘图串行执行。"
+  },
+  {
+    "path": "backend/agent/nodes/verification.py",
+    "name": "verify",
+    "line": 10,
+    "end": 51,
+    "explained": true,
+    "docstring": "检查 finish 参数、用户要求和实际结果。检查通过才允许生成报告，失败则提供具体错误。"
+  },
+  {
+    "path": "backend/agent/tool_registry.py",
+    "name": "invoke_business",
+    "line": 8,
+    "end": 21,
+    "explained": true,
+    "docstring": "在本批次并发限额内执行授权业务工具，分别返回模型可见内容与内部产物。"
+  },
+  {
+    "path": "backend/agent/tool_registry.py",
+    "name": "get_dataset_schema",
+    "line": 25,
+    "end": 27,
+    "explained": false,
+    "docstring": "获取当前授权数据集的字段、表间关联和已经确认的统计口径。"
+  },
+  {
+    "path": "backend/agent/tool_registry.py",
+    "name": "execute_sql",
+    "line": 31,
+    "end": 40,
+    "explained": false,
+    "docstring": "执行受限 PostgreSQL SELECT。数据集和有效状态由服务端限定。可同时指定 chart_x、chart_y、chart_title 顺序生成完整图表。"
+  },
+  {
+    "path": "backend/agent/tool_registry.py",
+    "name": "customer_repeat_metrics",
+    "line": 44,
+    "end": 48,
+    "explained": false,
+    "docstring": "按 customer_unique_id 合并有效订单，计算独立客户、复购客户和复购率。开始日期包含，结束日期不包含。"
+  },
+  {
+    "path": "backend/agent/tool_registry.py",
+    "name": "sales_metrics",
+    "line": 52,
+    "end": 62,
+    "explained": true,
+    "docstring": "固定口径销售指标：order_count/item_amount/freight_amount/total_amount/aov；月度返回差值和两位小数增长率。可用 chart_x/chart_y/chart_title 自动绘图，减少模型轮次。"
+  },
+  {
+    "path": "backend/agent/tool_registry.py",
+    "name": "run_python",
+    "line": 66,
+    "end": 68,
+    "explained": false,
+    "docstring": "对本任务已返回的表格引用执行受限 Python。df/pd/np/Decimal 已提供，结果赋值 result；不导入模块、不读文件。"
+  },
+  {
+    "path": "backend/agent/tool_registry.py",
+    "name": "render_chart",
+    "line": 72,
+    "end": 75,
+    "explained": false,
+    "docstring": "将本任务已返回表格的全部行绘制为图表。依赖的查询先完成，不自动截取 Top N。"
+  },
+  {
+    "path": "backend/agent/tool_registry.py",
+    "name": "ask_clarification",
+    "line": 79,
+    "end": 81,
+    "explained": false,
+    "docstring": "缺少必要业务信息时询问用户，单独调用；由图中的人工澄清节点暂停和恢复。"
+  },
+  {
+    "path": "backend/agent/tool_registry.py",
+    "name": "finish",
+    "line": 85,
+    "end": 87,
+    "explained": false,
+    "docstring": "单独结束分析；result_refs 指定最终表格别名和图表 ID，不选择分页预览和重复中间表。说明默认不超过三条，只用已有数字，不主动增加未要求的派生计算。"
+  },
+  {
+    "path": "backend/api/dependencies.py",
+    "name": "current_user",
+    "line": 13,
+    "end": 25,
+    "explained": true,
+    "docstring": "验证登录令牌并读取用户记录。令牌无效或对应用户不存在时，返回未登录错误。"
+  },
+  {
+    "path": "backend/api/routes/analysis_tasks.py",
+    "name": "list_tasks",
+    "line": 19,
+    "end": 22,
+    "explained": false,
+    "docstring": "返回当前用户最近的任务。需要完整事件时再读取任务详情。"
+  },
+  {
+    "path": "backend/api/routes/analysis_tasks.py",
+    "name": "submit_task",
+    "line": 26,
+    "end": 30,
+    "explained": false,
+    "docstring": "先把任务保存到数据库，再向队列发送任务消息，返回创建好的任务信息。"
+  },
+  {
+    "path": "backend/api/routes/analysis_tasks.py",
+    "name": "get_task",
+    "line": 34,
+    "end": 36,
+    "explained": false,
+    "docstring": "读取任务状态、事件和结果信息，让页面刷新后仍能查看之前的分析。"
+  },
+  {
+    "path": "backend/api/routes/analysis_tasks.py",
+    "name": "resume_task",
+    "line": 40,
+    "end": 49,
+    "explained": true,
+    "docstring": "保存用户补充的答案并重新排队。只有等待输入的任务才能恢复，重复提交会被拒绝。"
+  },
+  {
+    "path": "backend/api/routes/analysis_tasks.py",
+    "name": "cancel_task",
+    "line": 53,
+    "end": 65,
+    "explained": true,
+    "docstring": "把任务状态改为已取消，并写入取消事件。执行器会在下一次步骤检查时停止后续操作。"
+  },
+  {
+    "path": "backend/api/routes/analysis_tasks.py",
+    "name": "task_events",
+    "line": 69,
+    "end": 73,
+    "explained": false,
+    "docstring": "按事件序号发送已保存的进度。前端通过 fetch 请求头传递令牌，不把令牌放进 URL。"
+  },
+  {
+    "path": "backend/api/routes/analysis_tasks.py",
+    "name": "stream_events",
+    "line": 76,
+    "end": 93,
+    "explained": true,
+    "docstring": "定期读取数据库中的新事件并发送给浏览器。浏览器断开或任务暂停、结束时，关闭这次连接。"
+  },
+  {
+    "path": "backend/api/routes/artifacts.py",
+    "name": "download_artifact",
+    "line": 13,
+    "end": 27,
+    "explained": true,
+    "docstring": "确认文件属于当前用户的任务，并已在任务中登记后提供下载。表格也可以下载为 CSV。"
+  },
+  {
+    "path": "backend/api/routes/auth.py",
+    "name": "register",
+    "line": 16,
+    "end": 25,
+    "explained": true,
+    "docstring": "创建用户名不重复的用户并签发登录令牌。用户名已存在时返回明确错误。"
+  },
+  {
+    "path": "backend/api/routes/auth.py",
+    "name": "login",
+    "line": 29,
+    "end": 34,
+    "explained": true,
+    "docstring": "核对用户密码。用户名不存在和密码错误使用相同提示，避免泄露账号是否存在。"
+  },
+  {
+    "path": "backend/api/routes/auth.py",
+    "name": "me",
+    "line": 38,
+    "end": 40,
+    "explained": false,
+    "docstring": "返回当前用户名，让前端确认保存的登录令牌仍然有效。"
+  },
+  {
+    "path": "backend/api/routes/conversations.py",
+    "name": "list_conversations",
+    "line": 13,
+    "end": 16,
+    "explained": false,
+    "docstring": "列出当前用户最近的会话及其数据集信息，不返回其他用户的会话。"
+  },
+  {
+    "path": "backend/api/routes/conversations.py",
+    "name": "get_conversation",
+    "line": 20,
+    "end": 29,
+    "explained": true,
+    "docstring": "按消息序号分页返回原文，同时返回摘要。生成摘要不会替换或删除原始消息。"
+  },
+  {
+    "path": "backend/api/routes/datasets.py",
+    "name": "list_datasets",
+    "line": 22,
+    "end": 25,
+    "explained": false,
+    "docstring": "按创建时间从新到旧列出当前用户的数据集。"
+  },
+  {
+    "path": "backend/api/routes/datasets.py",
+    "name": "upload_dataset",
+    "line": 29,
+    "end": 35,
+    "explained": false,
+    "docstring": "保存上传的 CSV 或 XLSX 文件，等待用户预览并确认字段映射后再导入。"
+  },
+  {
+    "path": "backend/api/routes/datasets.py",
+    "name": "create_demo",
+    "line": 39,
+    "end": 48,
+    "explained": false,
+    "docstring": "生成使用固定随机种子的四张模拟表。这里不下载真实 Olist 数据。"
+  },
+  {
+    "path": "backend/api/routes/datasets.py",
+    "name": "get_dataset",
+    "line": 52,
+    "end": 54,
+    "explained": false,
+    "docstring": "返回数据集的导入状态、错误信息和行数，供前端定期检查。"
+  },
+  {
+    "path": "backend/api/routes/datasets.py",
+    "name": "preview",
+    "line": 58,
+    "end": 65,
+    "explained": false,
+    "docstring": "读取少量数据和建议字段映射供用户预览。解析失败时返回具体错误。"
+  },
+  {
+    "path": "backend/api/routes/datasets.py",
+    "name": "confirm_import",
+    "line": 69,
+    "end": 85,
+    "explained": true,
+    "docstring": "锁住尚未就绪的数据集，保存用户确认的字段映射和统计口径，再发送导入任务。"
+  },
+  {
+    "path": "backend/api/routes/datasets.py",
+    "name": "delete_dataset",
+    "line": 89,
+    "end": 98,
+    "explained": false,
+    "docstring": "只允许删除没有关联分析任务且不在导入的数据集，避免影响正在执行或已有结果的任务。"
+  },
+  {
+    "path": "backend/api/routes/health.py",
+    "name": "health",
+    "line": 13,
+    "end": 34,
+    "explained": false,
+    "docstring": "检查数据库、Redis 和记忆向量库，返回各项是否可用，以及模型是否已配置。"
+  },
+  {
+    "path": "backend/api/routes/memories.py",
+    "name": "list_memories",
+    "line": 23,
+    "end": 28,
+    "explained": false,
+    "docstring": "返回当前用户保存的偏好、常问模板及向量同步状态。"
+  },
+  {
+    "path": "backend/api/routes/memories.py",
+    "name": "update_preferences",
+    "line": 32,
+    "end": 34,
+    "explained": false,
+    "docstring": "只更新请求中提供的偏好。未提供的字段保持原值，传入 null 则删除该项偏好。"
+  },
+  {
+    "path": "backend/api/routes/memories.py",
+    "name": "suggestions",
+    "line": 38,
+    "end": 44,
+    "explained": false,
+    "docstring": "有问题文本时检索相关模板；没有问题文本时推荐常用模板。模板中的旧日期需要用户重新填写。"
+  },
+  {
+    "path": "backend/api/routes/memories.py",
+    "name": "forget",
+    "line": 48,
+    "end": 60,
+    "explained": true,
+    "docstring": "先在 PostgreSQL 中标记记忆已删除，使其立即停止使用，再异步删除向量。向量删除失败会重试。"
+  },
+  {
+    "path": "backend/context/conversations.py",
+    "name": "owned_conversation",
+    "line": 14,
+    "end": 19,
+    "explained": false,
+    "docstring": "查找当前用户的会话。会话不存在或属于其他用户时，都返回会话不存在错误。"
+  },
+  {
+    "path": "backend/context/conversations.py",
+    "name": "append_message",
+    "line": 22,
+    "end": 33,
+    "explained": true,
+    "docstring": "按会话序号追加消息。调用方负责加锁和提交事务；同一任务的同一角色只保存一次消息。"
+  },
+  {
+    "path": "backend/context/conversations.py",
+    "name": "finish_conversation",
+    "line": 36,
+    "end": 62,
+    "explained": true,
+    "docstring": "保存已生成的完整报告作为会话消息。可在成功状态提交前保存，也可在任务成功后补写遗漏的报告。"
+  },
+  {
+    "path": "backend/context/conversations.py",
+    "name": "conversation_context",
+    "line": 65,
+    "end": 98,
+    "explained": true,
+    "docstring": "依次总结同一会话中较旧的消息，并保留近期消息。摘要失败时不删除原文，也不推进摘要进度。"
+  },
+  {
+    "path": "backend/context/manager.py",
+    "name": "safe_cut",
+    "line": 7,
+    "end": 15,
+    "explained": true,
+    "docstring": "确定历史消息的切分位置。保留下来的工具结果必须同时保留对应的模型调用消息。"
+  },
+  {
+    "path": "backend/context/manager.py",
+    "name": "task_digest",
+    "line": 18,
+    "end": 26,
+    "explained": false,
+    "docstring": "整理已有结果的引用信息和少量预览，让模型仍能使用真实文件 ID，不必自行编造。"
+  },
+  {
+    "path": "backend/context/manager.py",
+    "name": "compressed_request",
+    "line": 29,
+    "end": 40,
+    "explained": true,
+    "docstring": "整理压缩后的模型请求，保留系统规则、本次问题、摘要、结果引用和近期工具消息，不删除原文。"
+  },
+  {
+    "path": "backend/context/manager.py",
+    "name": "prepare_context",
+    "line": 43,
+    "end": 78,
+    "explained": true,
+    "docstring": "请求接近长度上限时总结旧消息。只有摘要成功才更新进度；失败时保留旧进度并使用较少的历史内容。"
+  },
+  {
+    "path": "backend/context/summary.py",
+    "name": "estimate_tokens",
+    "line": 7,
+    "end": 10,
+    "explained": true,
+    "docstring": "根据 UTF-8 字节数估算文本和消息格式占用的 token 数。这只是保守估计，不是精确分词结果。"
+  },
+  {
+    "path": "backend/context/summary.py",
+    "name": "summarize",
+    "line": 13,
+    "end": 55,
+    "explained": true,
+    "docstring": "把较长历史分块，逐块结合旧摘要生成新摘要。任一块失败就抛出异常，调用方不会更新摘要进度。"
+  },
+  {
+    "path": "backend/core/config.py",
+    "name": "get_settings",
+    "line": 84,
+    "end": 86,
+    "explained": false,
+    "docstring": "读取并缓存配置，让后续请求复用同一个配置对象，不反复读取 .env。"
+  },
+  {
+    "path": "backend/core/config.py",
+    "name": "storage",
+    "line": 77,
+    "end": 80,
+    "explained": false,
+    "docstring": "将配置的存储目录转换为绝对路径。相对路径以项目根目录为起点。"
+  },
+  {
+    "path": "backend/core/database.py",
+    "name": "get_session",
+    "line": 13,
+    "end": 16,
+    "explained": true,
+    "docstring": "为接口请求提供独立的数据库会话。请求结束时关闭会话，尚未提交的修改会被回滚。"
+  },
+  {
+    "path": "backend/core/security.py",
+    "name": "hash_password",
+    "line": 12,
+    "end": 14,
+    "explained": true,
+    "docstring": "为密码生成包含随机盐的 Argon2 哈希。数据库保存哈希，不保存原始密码。"
+  },
+  {
+    "path": "backend/core/security.py",
+    "name": "verify_password",
+    "line": 17,
+    "end": 22,
+    "explained": true,
+    "docstring": "核对密码与已保存的哈希。密码不匹配或哈希无法验证时，返回 False。"
+  },
+  {
+    "path": "backend/core/security.py",
+    "name": "create_token",
+    "line": 25,
+    "end": 29,
+    "explained": true,
+    "docstring": "生成有效期为十二小时、仅供本应用使用的登录令牌。"
+  },
+  {
+    "path": "backend/core/security.py",
+    "name": "decode_token",
+    "line": 32,
+    "end": 36,
+    "explained": true,
+    "docstring": "检查令牌的签名、有效期和目标应用，验证通过后返回用户 ID。"
+  },
+  {
+    "path": "backend/core/storage.py",
+    "name": "json_value",
+    "line": 13,
+    "end": 24,
+    "explained": false,
+    "docstring": "把金额、日期和容器类型转换为可保存为 JSON 的值，同时保留 Decimal 金额精度。"
+  },
+  {
+    "path": "backend/core/storage.py",
+    "name": "artifact_dir",
+    "line": 27,
+    "end": 30,
+    "explained": false,
+    "docstring": "检查文件 ID 是否为合法 UUID，并返回配置存储目录下的对应文件夹。"
+  },
+  {
+    "path": "backend/core/storage.py",
+    "name": "write_artifact",
+    "line": 33,
+    "end": 47,
+    "explained": false,
+    "docstring": "创建结果文件夹，先写临时文件再替换内容文件，随后保存文件类型、归属和其他描述信息。"
+  },
+  {
+    "path": "backend/core/storage.py",
+    "name": "write_table",
+    "line": 50,
+    "end": 65,
+    "explained": true,
+    "docstring": "把完整结果保存为 JSON，同时生成可下载的 UTF-8 CSV，并返回结果信息和有限行预览。"
+  },
+  {
+    "path": "backend/core/storage.py",
+    "name": "csv_safe",
+    "line": 68,
+    "end": 77,
+    "explained": false,
+    "docstring": "转义可能被 Excel 当作公式执行的文本，同时保留合法的负数文本。"
+  },
+  {
+    "path": "backend/core/storage.py",
+    "name": "read_artifact",
+    "line": 80,
+    "end": 87,
+    "explained": false,
+    "docstring": "读取结果文件的信息和路径。如果指定任务 ID，还要确认文件属于该任务。"
+  },
+  {
+    "path": "backend/core/storage.py",
+    "name": "read_table",
+    "line": 90,
+    "end": 95,
+    "explained": true,
+    "docstring": "读取当前任务的表格文件。文件属于其他任务或不是表格时，拒绝读取。"
+  },
+  {
+    "path": "backend/execution/metric_scope.py",
+    "name": "scoped_query",
+    "line": 7,
+    "end": 43,
+    "explained": true,
+    "docstring": "找到查询中实际引用的订单和明细表，将它们改为只包含有效订单的子查询，并绑定状态参数。"
+  },
+  {
+    "path": "backend/execution/policy.py",
+    "name": "validate_sql",
+    "line": 13,
+    "end": 49,
+    "explained": true,
+    "docstring": "只允许指定业务表上的查询，并把除法的分子转为 NUMERIC，避免整数相除丢失小数。"
+  },
+  {
+    "path": "backend/execution/policy.py",
+    "name": "validate_python",
+    "line": 52,
+    "end": 68,
+    "explained": true,
+    "docstring": "检查代码语法、名称和属性，拒绝危险操作。通过这项检查后，代码仍须放在受限容器中执行。"
+  },
+  {
+    "path": "backend/execution/sandbox.py",
+    "name": "execute_python",
+    "line": 11,
+    "end": 43,
+    "explained": true,
+    "docstring": "只向容器提供本次分析所需的输入和输出目录。执行超时或被取消时，尝试强制删除容器。"
+  },
+  {
+    "path": "backend/execution/sql_executor.py",
+    "name": "execute_query",
+    "line": 11,
+    "end": 39,
+    "explained": true,
+    "docstring": "在只读事务中指定数据集和查询超时，执行查询并检查返回行数，成功后保存表格结果。"
+  },
+  {
+    "path": "backend/ingestion/mapping.py",
+    "name": "infer_table",
+    "line": 24,
+    "end": 30,
+    "explained": false,
+    "docstring": "根据项目标准文件名或 Olist 官方文件名，识别客户、商品、订单和明细表。"
+  },
+  {
+    "path": "backend/ingestion/mapping.py",
+    "name": "default_mapping",
+    "line": 33,
+    "end": 36,
+    "explained": false,
+    "docstring": "为实际存在的同名列或 Olist 别名生成字段映射，不猜测其他列的业务含义。"
+  },
+  {
+    "path": "backend/ingestion/parsers.py",
+    "name": "read_frame",
+    "line": 8,
+    "end": 20,
+    "explained": true,
+    "docstring": "读取表格数据，限制 XLSX 解压后的大小，并拒绝重复列名。"
+  },
+  {
+    "path": "backend/ingestion/parsers.py",
+    "name": "workbook_sheets",
+    "line": 23,
+    "end": 32,
+    "explained": false,
+    "docstring": "读取 Excel 的工作表名称，用于识别各张工作表对应的业务表。"
+  },
+  {
+    "path": "backend/ingestion/validation.py",
+    "name": "convert_value",
+    "line": 7,
+    "end": 30,
+    "explained": true,
+    "docstring": "按目标字段转换输入值。金额必须非负、有限，并且小数精度不超过两位。"
+  },
+  {
+    "path": "backend/ingestion/validation.py",
+    "name": "normalize_table",
+    "line": 33,
+    "end": 61,
+    "explained": true,
+    "docstring": "按字段映射转换每行数据，并检查必填值和重复主键。报错时指出表名、行号和字段名。"
+  },
+  {
+    "path": "backend/ingestion/validation.py",
+    "name": "validate_relations",
+    "line": 64,
+    "end": 74,
+    "explained": true,
+    "docstring": "检查订单引用的客户，以及明细引用的订单和商品，是否存在于本次导入的数据中。"
+  },
+  {
+    "path": "backend/main.py",
+    "name": "lifespan",
+    "line": 12,
+    "end": 16,
+    "explained": true,
+    "docstring": "管理应用运行周期，在服务关闭时释放数据库资源，不在服务启动时修改数据库表。"
+  },
+  {
+    "path": "backend/main.py",
+    "name": "index",
+    "line": 27,
+    "end": 29,
+    "explained": false,
+    "docstring": "返回前端首页。页面和 API 使用相同地址，无需额外设置跨域登录请求。"
+  },
+  {
+    "path": "backend/main.py",
+    "name": "invalid_value",
+    "line": 33,
+    "end": 35,
+    "explained": false,
+    "docstring": "把 ValueError 转为 422 响应，并向用户返回长度受限的错误说明。"
+  },
+  {
+    "path": "backend/memory/service.py",
+    "name": "enqueue",
+    "line": 17,
+    "end": 20,
+    "explained": false,
+    "docstring": "向队列发送记忆记录的 ID。发送失败时保留待同步状态，由定时任务重试，不在消息中放密钥或向量。"
+  },
+  {
+    "path": "backend/memory/service.py",
+    "name": "serialize_memory",
+    "line": 23,
+    "end": 30,
+    "explained": false,
+    "docstring": "整理用户可以查看的记忆内容和同步状态，不返回连接配置。"
+  },
+  {
+    "path": "backend/memory/service.py",
+    "name": "set_preferences",
+    "line": 33,
+    "end": 65,
+    "explained": true,
+    "docstring": "锁住用户记录后更新允许的偏好。null 表示删除偏好；内容改变时增加版本号，并在提交后发送同步任务。"
+  },
+  {
+    "path": "backend/memory/service.py",
+    "name": "explicit_preferences",
+    "line": 68,
+    "end": 79,
+    "explained": true,
+    "docstring": "只从用户明确表示要长期保留的要求中提取允许的偏好，不从工具结果或助手回答中推测偏好。"
+  },
+  {
+    "path": "backend/memory/service.py",
+    "name": "question_template",
+    "line": 82,
+    "end": 89,
+    "explained": true,
+    "docstring": "把问题中的旧日期换成待填写的时间参数。涉及密码、令牌等敏感信息的问题不用于学习模板。"
+  },
+  {
+    "path": "backend/memory/service.py",
+    "name": "learn_task",
+    "line": 92,
+    "end": 120,
+    "explained": true,
+    "docstring": "只统计成功任务的常问模式。问题频次和已学习标记一起提交，同一任务重试时不会重复计数。"
+  },
+  {
+    "path": "backend/memory/service.py",
+    "name": "synchronize",
+    "line": 123,
+    "end": 162,
+    "explained": true,
+    "docstring": "同步指定记忆的向量，并用锁避免同时同步同一条记录。同步失败时保存错误，等待后续重试。"
+  },
+  {
+    "path": "backend/memory/service.py",
+    "name": "personalize",
+    "line": 165,
+    "end": 190,
+    "explained": true,
+    "docstring": "读取明确偏好，并检索相关常问模板。使用向量候选前，再核对数据库中的用户、版本和删除状态。"
+  },
+  {
+    "path": "backend/memory/service.py",
+    "name": "preference_clauses",
+    "line": 193,
+    "end": 203,
+    "explained": false,
+    "docstring": "将问题拆为短句，判断各句是在描述长期偏好还是本次要求。未写明范围的后续短句沿用最近的范围。"
+  },
+  {
+    "path": "backend/memory/service.py",
+    "name": "clause_preferences",
+    "line": 206,
+    "end": 211,
+    "explained": false,
+    "docstring": "从短句中提取允许的图表或报告风格值。出现多个冲突值时，由调用方决定如何处理。"
+  },
+  {
+    "path": "backend/memory/service.py",
+    "name": "resolve_personalization",
+    "line": 214,
+    "end": 234,
+    "explained": true,
+    "docstring": "合并历史偏好和本次要求，本次明确要求优先。只返回允许的展示偏好，不改变指标口径。"
+  },
+  {
+    "path": "backend/memory/vectors.py",
+    "name": "connect",
+    "line": 10,
+    "end": 16,
+    "explained": false,
+    "docstring": "创建带超时设置的 Milvus 客户端，并明确指定数据库，不修改其他客户端的默认数据库。"
+  },
+  {
+    "path": "backend/memory/vectors.py",
+    "name": "initialize_vector_store",
+    "line": 19,
+    "end": 53,
+    "explained": false,
+    "docstring": "创建本项目的数据库和集合。已存在时复用；已有集合的向量维度不兼容时，报错而不删除重建。"
+  },
+  {
+    "path": "backend/memory/vectors.py",
+    "name": "embed",
+    "line": 56,
+    "end": 71,
+    "explained": true,
+    "docstring": "调用嵌入接口将文本转成向量，检查向量维度和数值是否合法。密钥只从配置中读取。"
+  },
+  {
+    "path": "backend/memory/vectors.py",
+    "name": "write_vector",
+    "line": 74,
+    "end": 80,
+    "explained": false,
+    "docstring": "以记忆 ID 写入或更新对应向量，不修改其他记录或其他数据库。"
+  },
+  {
+    "path": "backend/memory/vectors.py",
+    "name": "delete_vector",
+    "line": 83,
+    "end": 89,
+    "explained": false,
+    "docstring": "只删除记忆 ID 和用户 ID 同时匹配的向量，不删除集合或数据库。"
+  },
+  {
+    "path": "backend/memory/vectors.py",
+    "name": "search_vectors",
+    "line": 92,
+    "end": 104,
+    "explained": true,
+    "docstring": "检索当前用户的常问模板向量。返回候选后，调用方还需检查 PostgreSQL 中的版本和删除状态。"
+  },
+  {
+    "path": "backend/memory/vectors.py",
+    "name": "vector_health",
+    "line": 107,
+    "end": 119,
+    "explained": false,
+    "docstring": "连接 Milvus 并检查项目记忆集合是否存在，连接或检查失败时返回 False。"
+  },
+  {
+    "path": "backend/memory/vectors.py",
+    "name": "check",
+    "line": 109,
+    "end": 115,
+    "explained": false,
+    "docstring": "在线程中调用同步 Milvus SDK，避免阻塞 API 使用的异步事件循环。"
+  },
+  {
+    "path": "backend/models/base.py",
+    "name": "new_id",
+    "line": 12,
+    "end": 14,
+    "explained": false,
+    "docstring": "生成 UUID 作为资源 ID。访问资源时仍要检查用户归属，不能只依赖 ID 难以猜测。"
+  },
+  {
+    "path": "backend/models/base.py",
+    "name": "utcnow",
+    "line": 17,
+    "end": 19,
+    "explained": false,
+    "docstring": "返回带 UTC 时区的当前时间，用于记录任务和导入的创建、更新时间。"
+  },
+  {
+    "path": "backend/reporting/builder.py",
+    "name": "escape_cell",
+    "line": 5,
+    "end": 7,
+    "explained": false,
+    "docstring": "转义 Markdown 表格中的竖线和换行。空值显示为缺失或无定义，而不是零。"
+  },
+  {
+    "path": "backend/reporting/builder.py",
+    "name": "build_report",
+    "line": 10,
+    "end": 38,
+    "explained": true,
+    "docstring": "根据问题、统计口径和实际结果生成报告，并附上表格、图表来源及计算代码。"
+  },
+  {
+    "path": "backend/reporting/requirements.py",
+    "name": "requested_columns",
+    "line": 5,
+    "end": 21,
+    "explained": false,
+    "docstring": "提取用户明确列出的结果列名，排除日期格式说明，不猜测用户没有指定的列名。"
+  },
+  {
+    "path": "backend/reporting/requirements.py",
+    "name": "python_requested",
+    "line": 24,
+    "end": 27,
+    "explained": false,
+    "docstring": "判断用户是否明确要求使用 Python。否定使用 Python 的表达不算要求。"
+  },
+  {
+    "path": "backend/reporting/requirements.py",
+    "name": "chart_requested",
+    "line": 30,
+    "end": 33,
+    "explained": false,
+    "docstring": "识别明确绘图要求，避免用户要求图表而模型仅交付表格；否定绘图的表达不计入。"
+  },
+  {
+    "path": "backend/reporting/requirements.py",
+    "name": "chart_forbidden",
+    "line": 36,
+    "end": 38,
+    "explained": false,
+    "docstring": "识别明确禁止所有绘图的要求；只否定某种图而要求另一种图，不等于全部禁图。"
+  },
+  {
+    "path": "backend/reporting/verification.py",
+    "name": "select_report_artifacts",
+    "line": 11,
+    "end": 36,
+    "explained": true,
+    "docstring": "从当前任务产物选取最终结果，未知引用拒绝；图表的真实来源表自动纳入交付校验。"
+  },
+  {
+    "path": "backend/reporting/verification.py",
+    "name": "mask_month_range",
+    "line": 39,
+    "end": 41,
+    "explained": false,
+    "docstring": "在提取数字前去掉合法月份范围的连接符，避免把月份范围读成负数。非法月份不会被忽略。"
+  },
+  {
+    "path": "backend/reporting/verification.py",
+    "name": "numbers",
+    "line": 44,
+    "end": 47,
+    "explained": false,
+    "docstring": "从文字中提取数字并转成 Decimal，保留正负号，并支持千分位格式。"
+  },
+  {
+    "path": "backend/reporting/verification.py",
+    "name": "known_dates",
+    "line": 50,
+    "end": 55,
+    "explained": false,
+    "docstring": "提取文字中明确出现的年月日，作为可写入报告的日期依据，不把其他任意数字当成统计事实。"
+  },
+  {
+    "path": "backend/reporting/verification.py",
+    "name": "verify_report_inputs",
+    "line": 58,
+    "end": 110,
+    "explained": true,
+    "docstring": "核对结果文件、报告数字、订单状态和图表行数。这些检查不能保证所有业务解释都正确。"
+  },
+  {
+    "path": "backend/repositories/analysis_tasks.py",
+    "name": "owned_task",
+    "line": 9,
+    "end": 14,
+    "explained": false,
+    "docstring": "查找属于当前用户的任务。任务不存在或属于其他用户时，都返回任务不存在错误。"
+  },
+  {
+    "path": "backend/repositories/analysis_tasks.py",
+    "name": "update_task",
+    "line": 17,
+    "end": 37,
+    "explained": true,
+    "docstring": "更新任务状态，并按需写入一条事件，两项修改在同一个事务中提交。\n\n更新前先锁住任务记录，避免取消操作与状态更新同时修改它。\n返回 True 表示修改已提交；任务不存在或已被取消时返回 False，不再更新状态或写入事件。"
+  },
+  {
+    "path": "backend/repositories/analysis_tasks.py",
+    "name": "emit_event",
+    "line": 40,
+    "end": 51,
+    "explained": true,
+    "docstring": "把步骤事件保存到 PostgreSQL，前端随后通过 SSE 按事件序号读取。"
+  },
+  {
+    "path": "backend/repositories/analysis_tasks.py",
+    "name": "register_artifact",
+    "line": 54,
+    "end": 67,
+    "explained": true,
+    "docstring": "锁住任务后登记产物并分配唯一表格别名；已取消任务拒绝登记，同 ID 重投返回原记录。"
+  },
+  {
+    "path": "backend/repositories/analysis_tasks.py",
+    "name": "check_cancelled",
+    "line": 70,
+    "end": 75,
+    "explained": false,
+    "docstring": "检查任务是否被取消。已取消或任务不存在时抛出异常，让调用方停止后续分析。"
+  },
+  {
+    "path": "backend/repositories/analysis_tasks.py",
+    "name": "mark_report_selection",
+    "line": 78,
+    "end": 84,
+    "explained": false,
+    "docstring": "在任务行锁中标记最终交付与中间结果，保留全部来源供追溯，不删除文件。"
+  },
+  {
+    "path": "backend/repositories/business_data.py",
+    "name": "insert_tables",
+    "line": 9,
+    "end": 14,
+    "explained": true,
+    "docstring": "按外键依赖顺序分批写入四张表。只执行插入，不在函数内部提交事务。"
+  },
+  {
+    "path": "backend/repositories/datasets.py",
+    "name": "owned_dataset",
+    "line": 7,
+    "end": 12,
+    "explained": false,
+    "docstring": "查找当前用户的数据集。不存在或属于其他用户时，统一返回数据集不存在错误。"
+  },
+  {
+    "path": "backend/services/analysis_tasks.py",
+    "name": "serialize_task",
+    "line": 11,
+    "end": 20,
+    "explained": false,
+    "docstring": "整理接口需要的任务状态和结果信息，不返回图线程 ID 或数据库配置。"
+  },
+  {
+    "path": "backend/services/analysis_tasks.py",
+    "name": "create_task",
+    "line": 23,
+    "end": 61,
+    "explained": true,
+    "docstring": "检查数据集归属和就绪状态后创建任务，并保存本任务使用的口径、数据版本和模型配置。"
+  },
+  {
+    "path": "backend/services/analysis_tasks.py",
+    "name": "dispatch",
+    "line": 64,
+    "end": 73,
+    "explained": true,
+    "docstring": "向 Celery 发送任务消息。发送成功返回 True，失败返回 False，数据库中已保存的任务不被删除。"
+  },
+  {
+    "path": "backend/services/datasets.py",
+    "name": "serialize_dataset",
+    "line": 17,
+    "end": 22,
+    "explained": false,
+    "docstring": "整理数据集的公开信息，不返回服务器上的上传文件路径。"
+  },
+  {
+    "path": "backend/services/datasets.py",
+    "name": "save_uploads",
+    "line": 25,
+    "end": 70,
+    "explained": true,
+    "docstring": "在大小限制内保存四个 CSV 或一个 XLSX。文件类型不符、业务表重复或缺失时，返回错误。"
+  },
+  {
+    "path": "backend/services/datasets.py",
+    "name": "preview_dataset",
+    "line": 73,
+    "end": 80,
+    "explained": false,
+    "docstring": "读取每张表的列名和少量样例，给出建议映射，供用户确认后导入。"
+  },
+  {
+    "path": "backend/services/datasets.py",
+    "name": "import_dataset",
+    "line": 83,
+    "end": 122,
+    "explained": true,
+    "docstring": "锁住本次数据集并校验全部内容。四表数据和导入成功状态在同一事务中保存。"
+  },
+  {
+    "path": "backend/tools/chart.py",
+    "name": "create_chart",
+    "line": 16,
+    "end": 19,
+    "explained": false,
+    "docstring": "保护 Matplotlib 共享状态，独立查询仍并发，单进程中的绘图依次完成。"
+  },
+  {
+    "path": "backend/tools/chart.py",
+    "name": "draw_chart",
+    "line": 22,
+    "end": 72,
+    "explained": true,
+    "docstring": "绘制当前任务表格的全部行，并记录来源、行数和方向。数据过多或字段不适合绘图时，明确报错。"
+  },
+  {
+    "path": "backend/tools/customer_metrics.py",
+    "name": "customer_repeat_requested",
+    "line": 6,
+    "end": 9,
+    "explained": false,
+    "docstring": "判断问题是否要求复购分析，让报告校验时确认使用了专门的复购计算结果。"
+  },
+  {
+    "path": "backend/tools/customer_metrics.py",
+    "name": "customer_repeat_metrics",
+    "line": 12,
+    "end": 41,
+    "explained": true,
+    "docstring": "按独立客户标识合并有效订单，统计至少购买两单的客户及其占比。开始日包含，结束日不包含。"
+  },
+  {
+    "path": "backend/tools/dataset_schema.py",
+    "name": "describe_schema",
+    "line": 5,
+    "end": 22,
+    "explained": false,
+    "docstring": "返回数据字典，解释连接字段和金额所对应的商品项，提醒模型避免联表后重复统计。"
+  },
+  {
+    "path": "backend/tools/python.py",
+    "name": "analyze_table",
+    "line": 5,
+    "end": 7,
+    "explained": false,
+    "docstring": "在隔离容器中对指定表格运行分析代码，并返回新生成的表格信息。"
+  },
+  {
+    "path": "backend/tools/sales_metrics.py",
+    "name": "sales_metrics",
+    "line": 6,
+    "end": 48,
+    "explained": true,
+    "docstring": "先逐订单汇总商品项，再统计订单量与金额；开始包含、结束不包含，无明细订单金额为零。"
+  },
+  {
+    "path": "backend/tools/sql.py",
+    "name": "search_data",
+    "line": 5,
+    "end": 7,
+    "explained": false,
+    "docstring": "调用受限查询执行器，运行 SQL 并返回保存好的表格结果。"
+  },
+  {
+    "path": "backend/workers/tasks.py",
+    "name": "analyze",
+    "line": 25,
+    "end": 106,
+    "explained": true,
+    "docstring": "按任务 ID 获取 PostgreSQL 咨询锁，防止同一任务被多个 Worker 同时执行。连接断开后锁会自动释放。"
+  },
+  {
+    "path": "backend/workers/tasks.py",
+    "name": "import_job",
+    "line": 110,
+    "end": 112,
+    "explained": false,
+    "docstring": "在独立异步事件循环中执行数据集导入，作为 Celery 的导入任务入口。"
+  },
+  {
+    "path": "backend/workers/tasks.py",
+    "name": "analyze_job",
+    "line": 116,
+    "end": 118,
+    "explained": false,
+    "docstring": "在独立异步事件循环中执行或恢复分析，作为 Celery 的分析任务入口。"
+  },
+  {
+    "path": "backend/workers/tasks.py",
+    "name": "recover_pending",
+    "line": 121,
+    "end": 152,
+    "explained": true,
+    "docstring": "重新发送待导入或待分析任务。对于 running 任务，只有没有 Worker 持有执行锁时才重新发送。"
+  },
+  {
+    "path": "backend/workers/tasks.py",
+    "name": "recover_job",
+    "line": 156,
+    "end": 158,
+    "explained": false,
+    "docstring": "由 Beat 每分钟调用一次，寻找已保存但没有正常执行的任务，再尝试发送队列消息。"
+  },
+  {
+    "path": "backend/workers/tasks.py",
+    "name": "memory_sync_job",
+    "line": 162,
+    "end": 164,
+    "explained": false,
+    "docstring": "在独立记忆 Worker 中调用嵌入接口并同步向量，减少对分析报告交付的等待。"
+  },
+  {
+    "path": "sandbox/runner.py",
+    "name": "serialize_result",
+    "line": 10,
+    "end": 22,
+    "explained": false,
+    "docstring": "将允许的结果类型转换为表格。结果过大、包含非有限数值或不能序列化时，返回错误。"
+  },
+  {
+    "path": "sandbox/runner.py",
+    "name": "main",
+    "line": 25,
+    "end": 35,
+    "explained": false,
+    "docstring": "从固定路径读取数据和代码，使用受限内置函数执行代码，随后保存表格结果。"
+  },
+  {
+    "path": "scripts/init_db.py",
+    "name": "postgres_dsn",
+    "line": 17,
+    "end": 19,
+    "explained": false,
+    "docstring": "将 SQLAlchemy 的连接 URL 转换为 psycopg 能使用的 PostgreSQL 连接字符串。"
+  },
+  {
+    "path": "scripts/init_db.py",
+    "name": "initialize_database",
+    "line": 22,
+    "end": 61,
+    "explained": false,
+    "docstring": "创建尚不存在的表、只读账号、行级权限和 checkpoint 表，已有表不会删除重建。"
+  },
+  {
+    "path": "scripts/init_memory.py",
+    "name": "main",
+    "line": 14,
+    "end": 27,
+    "explained": false,
+    "docstring": "创建四张新增表并导出建表 SQL，然后创建长期记忆所用的 Milvus 集合。"
+  },
+  {
+    "path": "evaluations/oracle.py",
+    "name": "reference_answers",
+    "line": 6,
+    "end": 42,
+    "explained": false,
+    "docstring": "用字典关联四表并通过 Decimal 汇总，生成订单、月份、品类、地区和客户指标的基准答案。"
+  },
+  {
+    "path": "evaluations/oracle.py",
+    "name": "compare_rows",
+    "line": 45,
+    "end": 73,
+    "explained": false,
+    "docstring": "先按维度匹配全部行，再检查数值是否位于允许的绝对误差范围内。"
+  }
+]

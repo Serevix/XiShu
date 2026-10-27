@@ -1,0 +1,42 @@
+# 忽略 Python 缓存和本地虚拟环境目录。
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# 忽略本地配置及凭据文件，避免提交连接信息或密钥。
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# 忽略前端依赖和构建生成的文件。
+node_modules/
+dist/
+build/
+
+# 忽略本地上传、分析结果和日志，但保留目录占位文件。
+storage/uploads/*
+!storage/uploads/.gitkeep
+storage/artifacts/*
+!storage/artifacts/.gitkeep
+storage/traces/*
+!storage/traces/.gitkeep
+storage/sandbox-runs/
+storage/evaluation_data/
+celerybeat-schedule*
+evaluations/results/*
+!evaluations/results/.gitkeep
+*.log
+
+# 忽略操作系统自动生成的文件。
+.DS_Store
+Thumbs.db
